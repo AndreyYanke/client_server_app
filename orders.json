@@ -1,0 +1,18 @@
+{
+    "orders": [
+        {
+            "buyer": "PetrovAV",
+            "data": "30.05.2021",
+            "item": "meat",
+            "price": "800",
+            "quantity": "16"
+        },
+        {
+            "buyer": "PetrovAV",
+            "data": "30.05.2021",
+            "item": "vegetable",
+            "price": "800",
+            "quantity": "16"
+        }
+    ]
+}
