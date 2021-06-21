@@ -12,10 +12,3 @@ log_handler.setFormatter(formatter)
 logger = logging.getLogger('messenger.client')
 logger.setLevel(logging.INFO)
 logger.addHandler(log_handler)
-
-if __name__ == '__main__':
-    console = logging.StreamHandler()
-    console.setLevel(logging.DEBUG)
-    console.setFormatter(formatter)
-    logger.addHandler(console)
-    logger.info('Client Log.')

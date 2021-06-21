@@ -22,24 +22,33 @@ def init_socket():
         logger.info(f'Соединенте с сервером установлено.')
         return s
 
+def read_messages():
+    data = s.recv(1024)
+    print(data.decode())
+
+def write_messages():
+    while True:
+        msg = input('Ваше сообщение: ')
+        if msg == 'exit':
+            break
+        else:
+            try:
+                return pickle.dumps(msg)
+            except pickle.PicklingError:
+                logger.error('Не удалось закодировать и отправить сообщни серверу')
+            s.close()
 
 @log
-def send_answer():
-    msg ={
-        "action": "authenticate",
-        "time": time.time(),
-        "user": {
-                "account_name":  "C0deMaver1ck",
-                "password":      "CorrectHorseBatteryStaple"
-        }
-    }
-    try:
-        return pickle.dumps(msg)
-    except pickle.PicklingError:
-        logger.error('Не удалось закодировать и отправить сообщни серверу')
-    s.close()
+def main(ctype):
+    if ctype == 'r':
+        read_messages()
+    elif ctype == 'w':
+        write_messages()
+
+
 
 
 if __name__ == '__main__':
     socket = init_socket()
-    send = send_answer()
+    client_type = input('Вы хотите только чистать (r) или только писать (w)?')
+    send = main(client_type)
